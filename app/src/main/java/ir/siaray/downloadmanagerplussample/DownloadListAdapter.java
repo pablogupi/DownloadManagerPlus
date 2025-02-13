@@ -1,5 +1,6 @@
 package ir.siaray.downloadmanagerplussample;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DownloadManager;
 import android.os.Build;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -62,34 +64,38 @@ public class DownloadListAdapter extends RecyclerView.Adapter<DownloadListAdapte
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, final int position) {
-        final FileItem item = items.get(position);
-        holder.tvName.setText(Utils.getFileName(item.getUri()));
-        holder.btnAction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickOnActionButton(holder, item);
-            }
-        });
-        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //deleteDownload(holder, item, position);
-                final ActionListener deleteListener = getDeleteListener(holder
-                        , holder.downloadProgressBar
-                        , item
-                        , position);
-                showPopUpMenu(activity, view, item, deleteListener);
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        int currentPosition = holder.getAbsoluteAdapterPosition(); // Usa el método recomendado
 
-            }
-        });
-        showProgress(holder, item, position);
-        Log.print("i: " + position + " item: " + item);
-        Log.print("status: " + position + " : " + item.getDownloadStatus());
+        final FileItem item = items.get(currentPosition);
+            holder.tvName.setText(Utils.getFileName(item.getUri()));
+            holder.btnAction.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickOnActionButton(holder, item);
+                }
+            });
+            holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //deleteDownload(holder, item, position);
+                    final ActionListener deleteListener = getDeleteListener(holder
+                            , holder.downloadProgressBar
+                            , item
+                            , position);
+                    showPopUpMenu(activity, view, item, deleteListener);
 
-        initItem(holder, item);
-        holder.itemView.setTag(item);
+                }
+            });
+            showProgress(holder, item, position);
+            Log.print("i: " + position + " item: " + item);
+            Log.print("status: " + position + " : " + item.getDownloadStatus());
+
+            initItem(holder, item);
+            holder.itemView.setTag(item);
+
     }
+
 
     private void initItem(ViewHolder holder, FileItem item) {
         switch (item.getDownloadStatus()) {

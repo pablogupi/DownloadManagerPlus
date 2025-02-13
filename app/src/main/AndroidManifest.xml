@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ir.siaray.downloadmanagerplussample">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!--<uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />-->
     <!--<uses-permission android:name="android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS" />-->
 
@@ -15,7 +13,7 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"  android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW"/>
@@ -25,7 +23,7 @@
         <activity android:name=".NormalActivity" />
         <activity android:name=".ListActivity" />
 
-        <receiver android:name=".YourNotificationBroadcastReceiver">
+        <receiver android:name=".YourNotificationBroadcastReceiver"  android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
                 <action android:name="android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED" />

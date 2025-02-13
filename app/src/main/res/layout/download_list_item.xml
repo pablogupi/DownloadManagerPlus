@@ -30,9 +30,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
-                android:tint="#ffffff"
                 android:padding="22dp"
-                android:src="@mipmap/ic_start" />
+                android:src="@mipmap/ic_start"
+                app:tint="#ffffff" />
 
             <!--<com.pnikosis.materialishprogress.ProgressWheel
                 android:id="@+id/progress_wheel"

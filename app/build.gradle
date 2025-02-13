@@ -1,12 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion '29.0.3'
     defaultConfig {
-        applicationId 'ir.siaray.downloadmanagerplussample'
-        minSdkVersion 17
-        targetSdkVersion 30
+        namespace("ir.siaray.downloadmanagerplussample")
+        minSdkVersion 23
+        targetSdkVersion 35
+        compileSdkVersion 35
         versionCode 23
         versionName "1.4.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -23,22 +22,17 @@ android {
     }
     productFlavors {
     }
-    lintOptions {
-        checkReleaseBuilds false
-
-        abortOnError false
+    buildFeatures {
+        buildConfig true
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'com.pnikosis:materialish-progress:1.7'
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.2'
     implementation project(':downloadmanagerplus')
-    implementation "androidx.recyclerview:recyclerview:1.1.0"
-    implementation 'com.akexorcist:round-corner-progress-bar:2.1.1'
+    implementation "androidx.recyclerview:recyclerview:1.4.0"
+    implementation 'com.akexorcist:round-corner-progress-bar:2.2.0'
 }
