@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         namespace("ir.siaray.downloadmanagerplus")
-        compileSdkVersion COMPILE_SDK_VERSION as int
+        compileSdk COMPILE_SDK_VERSION as int
         buildToolsVersion BUILD_TOOLS_VERSION as String
         minSdkVersion MIN_SDK_VERSION as int
         targetSdkVersion TARGET_SDK_VERSION as int
@@ -21,8 +21,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility "17"
+        targetCompatibility JavaVersion.VERSION_17
     }
     buildFeatures {
         buildConfig true

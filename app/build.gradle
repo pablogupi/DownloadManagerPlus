@@ -5,9 +5,9 @@ android {
         namespace("ir.siaray.downloadmanagerplussample")
         minSdkVersion 23
         targetSdkVersion 35
-        compileSdkVersion 35
+        compileSdk 35
         versionCode 23
-        versionName "1.4.2"
+        versionName "1.5.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -17,8 +17,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility "17"
+        targetCompatibility JavaVersion.VERSION_17
     }
     productFlavors {
     }
@@ -34,5 +34,5 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     implementation project(':downloadmanagerplus')
     implementation "androidx.recyclerview:recyclerview:1.4.0"
-    implementation 'com.akexorcist:round-corner-progress-bar:2.2.0'
+    implementation 'com.akexorcist:round-corner-progress-bar:2.2.1'
 }
