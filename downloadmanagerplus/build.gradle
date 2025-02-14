@@ -42,19 +42,6 @@ dependencies {
 
 }
 
-/*publish {
-    userOrg = USER_NAME as String
-    groupId = GROUP as String
-    artifactId = LIBRARY_ARTIFACT_ID as String
-    uploadName = UPLOAD_NAME as String
-    publishVersion = LIBRARY_VERSION_NAME as String
-    desc = LIBRARY_DESCRIPTION as String
-    website = GITHUB_URL as String
-    issueTracker = ISSUE_TRACKER as String
-}*/
-
-/*def githubProperties = new Properties()
-githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
 
 def getVersionName = { ->
     return LIBRARY_VERSION_NAME  // Replace with version Name
@@ -66,27 +53,16 @@ def getArtificatId = { ->
 
 publishing {
     publications {
-        bar(MavenPublication) {
-            groupId GROUP as String// Replace with group ID
-            artifactId getArtificatId()
-            version getVersionName()
-            artifact("$buildDir/outputs/aar/${getArtificatId()}-release.aar")
-        }
-    }
-    repositories {
-        maven {
-            name = "GitHubPackages"
-
-            url = uri("https://maven.pkg.github.com/SIARAY/DownloadManagerPlus")
-
-            credentials {
-                username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
-                password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")
+        mavenJava(MavenPublication) {
+            groupId GROUP
+            artifactId LIBRARY_ARTIFACT_ID
+            version LIBRARY_VERSION_NAME
+            afterEvaluate {
+                artifact("$buildDir/outputs/aar/${LIBRARY_ARTIFACT_ID}-release.aar")
             }
         }
     }
-
-}*/
+}
 
 tasks.register('sourcesJar', Jar) {
     from android.sourceSets.main.java.srcDirs
